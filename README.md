@@ -9,7 +9,7 @@ Rutas de archivos de configuracion:
 Metodos para iniciar nginx:
 Existen 2 metodos para iniciar nginx
   * Por proceso: 
-    `<addr>` # nginx `<addr>`
+    ` # nginx `
     # ps -aux | grep 
   - Por servicio: 
     # systemctl start nginx
