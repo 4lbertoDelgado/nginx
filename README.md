@@ -17,17 +17,16 @@ Existen 2 metodos para iniciar nginx
     * ` systemctl restart nginx `
     
 Para ver la version:
-    * ` # nginx -v `
+` # nginx -v `
 
-Para ver los modulos configurados durante la instalacion
-    * ` # nginx -V `
+Para ver los modulos configurados durante la instalacion 
+` # nginx -V `
 
-Para probar que los archivos de configuracion esten bien
-    * ` # nginx -t `
+Para probar que los archivos de configuracion esten bien 
+` # nginx -t `
     
 Para enviar una señal a nginx
-  - Para recargar los archivos de configuracion sin reiniciar
-    * ` # nginx -s reload `
+  * Para recargar los archivos de configuracion sin reiniciar ` # nginx -s reload `
 
 Archivos de configuracion de nginx
 -----------------------------------
