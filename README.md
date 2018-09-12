@@ -35,8 +35,3 @@ Para enviar una señal a nginx
 ## Archivos de configuracion de nginx
 ---
 
-    :::python
-    import lifetime
-    
-    for each_day in lifetime.days():
-        carpe_diem()
