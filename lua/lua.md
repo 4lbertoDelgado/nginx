@@ -76,6 +76,45 @@ lua_package_path "/etc/nginx/lua-plugins/lua-resty-string/lib/?.lua;/etc/nginx/l
 lua_package_cpath "/usr/local/lib/lua/5.1/?.so;;";
 ```
 
+Validación de integración de nginx con lua
+-------------------------------------------
+Creamos un nuevo archivo de configuracion lua.conf en /etc/nginx/conf.d para no ensuciar nuestra configuracion por defecto  
+Editamos el archivo /etc/nginx/conf.d/lua.conf
+```sh
+vi /etc/nginx/conf.d/lua.conf
+```
+
+Agregamos las siguientes lineas de codigo
+```sh
+
+server {
+    listen       8080 default_server;
+    server_name  localhost;
+
+    error_log    /var/log/nginx/api-gateway-error.log debug;
+
+    #charset koi8-r;
+    #access_log  /var/log/nginx/host.access.log  main;
+
+    location / {
+        default_type text/html;
+        root   /usr/share/nginx/html;
+        index  index.html index.htm;
+    }
+
+     location /lua_content {
+         # MIME type determined by default_type:
+         default_type 'text/plain';
+
+         content_by_lua_block {
+             ngx.say('Hello,world!')
+         }
+     }
+
+```
+Para validar invocamos la url  
+http://localhost:8080/lua_content
+
 
 
 
