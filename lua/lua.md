@@ -78,6 +78,7 @@ lua_package_cpath "/usr/local/lib/lua/5.1/?.so;;";
 
 Validación de integración de nginx con lua
 -------------------------------------------
+https://github.com/openresty/lua-nginx-module/#installation  
 Creamos un nuevo archivo de configuracion lua.conf en /etc/nginx/conf.d para no ensuciar nuestra configuracion por defecto  
 Editamos el archivo /etc/nginx/conf.d/lua.conf
 ```sh
