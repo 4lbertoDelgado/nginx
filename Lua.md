@@ -14,8 +14,10 @@ nginx-plus-module-lua-15+0.10.13-2.el7.ngx.x86_64.rpm
 Instalar plugins adicionales a lua basados en codigo lua
 ---------------------------------------------------------
 Crear el siguiente directorio lua-plugins en /etc/nginx  
+```sh
 mkdir -p /etc/nginx/lua-plugins  
-  
+```
+
 En el directorio /etc/nginx/lua-plugins descargar los siguientes plugins  
 Estos plugins son necesarios para agregarles funcionabilidades al codigo lua
 
@@ -35,11 +37,27 @@ Utilidades de cadena y funciones hash comunes
 https://github.com/openresty/lua-resty-string  
 lua-resty-string
 
-Copiar de directorio lua-plugins, los plugins en la ruta indicada.
+Copiar de directorio plugins-lua, los plugins en la ruta indicada.
 
 Instalar plugins adicionales a lua basados en codigo c
 -------------------------------------------------------
-Crear el directorio
+Crear el directorio /usr/local/lib/lua/5.1/  
+```sh
+mkdir -p /usr/local/lib/lua/5.1/
+```
+En el directorio /usr/local/lib/lua/5.1/ descargar los siguientes plugins  
+
+Lua CJSON is a fast JSON encoding/parsing module for Lua  
+https://github.com/openresty/lua-cjson  
+Descargar fuentes  
+https://www.kyne.com.au/~mark/software/lua-cjson.php  
+Manual instalacion de Funetes  
+https://www.kyne.com.au/~mark/software/lua-cjson-manual.html#_installation  
+
+Copiar de directorio plugins-c, los plugins en la ruta indicada.
+
+Cargar plugins en nginx
+------------------------
 
 
 
