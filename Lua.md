@@ -58,8 +58,19 @@ Copiar de directorio plugins-c, los plugins en la ruta indicada.
 
 Cargar plugins en nginx
 ------------------------
+Editar el archivo de configuracion de nginx.conf ubicado en /etc/nginx/  
+```sh
+vi /etc/nginx/nginx.conf
+```
+En la directiva http se debe agregar la configuracion para cargar los plugins
 
+```sh
+    # Establecemos las rutas de búsqueda para bibliotecas externas Lua puras
+    lua_package_path "/etc/nginx/lua-plugins/lua-resty-string/lib/?.lua;/etc/nginx/lua-plugins/lua-resty-hmac/lib/?.lua;/etc/nginx/lua-plugins/lua-resty-redis/lib/?.lua;/etc/nginx/lua-plugins/lua-resty-jwt/lib/?.lua;;";
 
+    # Establecemos las rutas de búsqueda para bibliotecas externas de Lua escritas en C
+    lua_package_cpath "/usr/local/lib/lua/5.1/?.so;;";
+```
 
 
 
