@@ -5,7 +5,7 @@ nginx-plus-15-2.el7.ngx.x86_64.rpm
 
 Instalar los mudulos de ndk y lua de nginx en ese orden
 --------------------------------------------------------
-Estos modulos son necesarios para enganchar nginx con lua
+Estos modulos son necesarios para enganchar nginx con lua  
 https://github.com/openresty/lua-nginx-module
 
 nginx-plus-module-ndk-15+0.3.0-2.el7.ngx.x86_64.rpm
