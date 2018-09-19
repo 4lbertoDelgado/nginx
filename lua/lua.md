@@ -110,7 +110,7 @@ server {
              ngx.say('Hello,world!')
          }
      }
-
+}
 ```
 Para validar invocamos la url  
 http://localhost:8080/lua_content
