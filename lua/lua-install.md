@@ -96,17 +96,20 @@ server {
 
     #charset koi8-r;
     #access_log  /var/log/nginx/host.access.log  main;
-
+    
+    # No tocamos el location por default
     location / {
         default_type text/html;
         root   /usr/share/nginx/html;
         index  index.html index.htm;
     }
-
-     location /lua_content {
+    
+    # Creamos un nuevo location 
+    location /lua_content {
          # MIME type determined by default_type:
          default_type 'text/plain';
-
+         
+         # Agregamos un bloque de codigo lua que se ejecutara al llegar a este location
          content_by_lua_block {
              ngx.say('Hello,world!')
          }
