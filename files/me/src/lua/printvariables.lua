@@ -40,6 +40,3 @@ ngx.say("var_payload_sub sub: " .. tostring(ngx_var4))
 ngx.say("var_payload_iss is type: " .. type(ngx_var5))
 ngx.say("var_payload_iss iss: " .. tostring(ngx_var5))
 
-
-
-
