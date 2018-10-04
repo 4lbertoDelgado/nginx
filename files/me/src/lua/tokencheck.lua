@@ -1,3 +1,4 @@
+-- Cargamos las librerias necesarias
 local cjson = require "cjson"
 local jwt = require "resty.jwt"
 
@@ -42,34 +43,43 @@ if token == nil then
     ngx.exit(ngx.HTTP_UNAUTHORIZED)
 end
 
+
 -- Forma 1 de obtener el kid desde una variable del nginx
-kid2 = ngx.var.jwt_header_kid
-aud2 = ngx.var.jwt_claim_aud
-
-
- 
+kid = ngx.var.jwt_header_kid
+aud = ngx.var.jwt_claim_aud
 
 -- Forma 2 de obtener el kid desde codigo lua
+-- Con load_jwt cargamos el token como objeto para accder a sus propiedades
 local jwt_obj = jwt:load_jwt(token)
+
+-- validamos que el jwt sea correcto
 if not jwt_obj.valid then
   ngx.status = ngx.HTTP_BAD_REQUEST
   ngx.say("invalid jwt")
   ngx.exit(ngx.HTTP_OK)
 end
 
-kid = jwt_obj.header.kid
-aud = jwt_obj.payload.aud
+kid2 = jwt_obj.header.kid
+aud2 = jwt_obj.payload.aud
 
+-- validamos que kid exista
 if kid == nil then
   ngx.status = ngx.HTTP_BAD_REQUEST
   ngx.say("missing kid")
   ngx.exit(ngx.HTTP_OK)
 end
 
--- Utilizamos la libreria cjason para mostrar el token en formato json
---local jwt_obj2 = jwt:verify("lua-resty-jwt", token)
-local jwt_obj2 = jwt:verify("asdasdasdas", token)
-ngx.say(cjson.encode(jwt_obj2))
+-- Utilizamos la libreria cjson para mostrar el token string en formato json string
+-- Se utiliza el metodo verify para verificar la estructura del token antes de encodificarlo en un json string
+
+local jwt_obj2 = jwt:verify("lua-resty-jwt", token)
+
+-- Con encode convertimos, codificamos  el token que es un string en un json string
+-- (encode devuelve un string)
+-- (decode se puede utilizar para convertir ese string en un objeto json y acceder a sus propiedades)
+
+local encode = cjson.encode(jwt_obj2)
+ngx.say(encode)
 
 -- Obtenemos la uri del request
 uri = ngx.var.uri
@@ -77,30 +87,25 @@ uri = ngx.var.uri
 --------------------------------------------------------------------
 
 
-
 -- Explicitly read the req body
 ngx.req.read_body()
 
 local body = ngx.req.get_body_data()
 local header = ngx.req.get_headers()
-
+ngx.say("=======================================")
 ngx.say("body data:")
 ngx.say(body)
 ngx.say("header data:")
+-- ngx.say(header)
+ngx.say("=======================================")
 ngx.say(tostring(token))
 ngx.say(tostring(token2))
+ngx.say("=======================================")
 ngx.say(kid)
 ngx.say(kid2)
 ngx.say(aud)
 ngx.say(aud2)
 ngx.say(uri)
-
-
-
-
-
-
-
 
 
 
