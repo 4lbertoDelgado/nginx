@@ -28,10 +28,13 @@ if not ok then
     return
 end
 
+-- Pasamos el resultado obtenido a una variable de nginx
 ngx.var.rediskid = res;
 
---ngx.say("REDISKID " .. tostring(ngx.var.rediskid))
+-- No se debe de usar un ngx.say antes de la redireccion porque dara un ERROR
+-- ngx.say("REDISKID " .. tostring(ngx.var.rediskid))
 
+-- Redirecionamos a otro location
 ngx.exec("/kidcheck")
 
 
