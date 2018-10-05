@@ -35,11 +35,11 @@ local jwt_obj = jwt:verify("lua-resty-jwt", jwt_token)
 -- encodificamos ese token string en un json string
 local encode  = cjson.encode(jwt_obj)
 ngx.log(ngx.NOTICE,'**** encode : ')
-ngx.log(ngx.NOTICE,'-----------------------------------------------------')
+ngx.log(ngx.NOTICE,'-----------------------------------------------------\n')
 ngx.log(ngx.NOTICE,'')
 ngx.log(ngx.NOTICE,encode)
 ngx.log(ngx.NOTICE,'')
-ngx.log(ngx.NOTICE,'-----------------------------------------------------')
+ngx.log(ngx.NOTICE,'-----------------------------------------------------\n')
 
 -- decodificamos ese json string en un objeto json
 local parseJsonJWT = cjson.decode(encode)
@@ -87,7 +87,7 @@ for i, ivalue in pairs(parseJsonAud) do
 	end
 end
 
-ngx.log(ngx.NOTICE,,'El recurso solicitado esxite: '..existe)
+ngx.log(ngx.NOTICE,'El recurso solicitado existe: '..existe)
 
 -- Retorno del codigo lua
 if(existe) then
