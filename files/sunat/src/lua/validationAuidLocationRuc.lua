@@ -52,8 +52,9 @@ local existe = false
 
 -- cuando llega el request, viene que api y que recurso (location) es el que desea consumir
 -- dentro de la auid del token vienen diferentes apiValue y recursos de esas apis a la que tiene acceso el usuario 
--- la variable apiValue sirve para encontrar dentro de la aud de la api a que api se tiene acceso
--- JSON
+-- la variable apiValue sirve para encontrar dentro del aud del token a que api se tiene acceso
+-- la variable recursoValue sirve para encontrar dentro del api del aud del token a que recurso(id) se tiene acceso
+-- JSON TOKEN
 --   |-- auid
 --         |-- api: https://api.sunat.gob.pe
 --              |-- recurso: [
