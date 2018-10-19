@@ -119,6 +119,22 @@ server {
 Para validar invocamos la url  
 http://localhost:8080/lua_content
 
+Transforma a JSON con sodico integramente lua sin librerias adiconales
+----------------------------------------------------------------------  
+http://regex.info/blog/lua/json  
+
+He codificado algunas rutinas de codificación / descodificación JSON simples en Lua puro y pensé en compartirlas en caso de que alguien más las encontrara útiles. Los uso en Adobe Lightroom, pero son Lua 5 puros, por lo que se pueden usar en cualquier lugar donde esté Lua.  
+
+```sh
+JSON = (loadfile "/etc/nginx/src/lua/JSON.lua")() -- one-time load of the routines  
+
+local lua_value = JSON:decode(raw_json_text) -- decode example JSON String a JSON Object
+
+local raw_json_text    = JSON:encode(lua_table_or_value)        -- encode example JSON Object a JSON String
+local pretty_json_text = JSON:encode_pretty(lua_table_or_value) -- "pretty printed" version JSON Object a JSON String
+
+```
+
 
 
 
