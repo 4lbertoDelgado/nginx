@@ -128,11 +128,14 @@ He codificado algunas rutinas de codificación / descodificación JSON simples e
 ```sh
 JSON = (loadfile "/etc/nginx/src/lua/JSON.lua")() -- one-time load of the routines  
 
-local lua_value = JSON:decode(raw_json_text) -- decode example JSON String a JSON Object
+-- decode example JSON String a JSON Object
+local lua_value = JSON:decode(raw_json_text) 
 
-local raw_json_text    = JSON:encode(lua_table_or_value)        -- encode example JSON Object a JSON String
-local pretty_json_text = JSON:encode_pretty(lua_table_or_value) -- "pretty printed" version JSON Object a JSON String
 
+-- encode example JSON Object a JSON String
+local raw_json_text    = JSON:encode(lua_table_or_value)       
+-- "pretty printed" version JSON Object a JSON String
+local pretty_json_text = JSON:encode_pretty(lua_table_or_value) 
 ```
 
 
