@@ -119,7 +119,7 @@ server {
 Para validar invocamos la url  
 http://localhost:8080/lua_content
 
-Transforma a JSON con sodico integramente lua sin librerias adiconales
+Transforma a JSON con codico integramente lua sin librerias adiconales
 ----------------------------------------------------------------------  
 http://regex.info/blog/lua/json  
 
