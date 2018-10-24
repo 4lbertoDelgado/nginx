@@ -1,6 +1,6 @@
 
 -- OBJETIVO: evaluar si el recurso (location) solicitado es igual al recurso que viene en la aud del token
--- la especificacion de la aud del token se genera de acuerdo a los permisos que tenga el usuario que requiere el recurso
+-- la especificacion de la aud del token se genera de BD de acuerdo a los permisos que tenga el usuario que requiere el recurso
 
 -- ---------------------------------------------------------------
 -- Funcion que compara si recurso del api del auid del token es igual al recurso solicitado del request
@@ -13,7 +13,8 @@ local function validateAuid(recursoValue, valueCompare)
   v, one, segundoContexto, tercerContexto = string.match(recursoValue, '/(%a+)(%d+)/(%a+)/(%a+)')
   primerContexto = v .. one
   concatToCompare = "/"..primerContexto .. "/" .. segundoContexto .. "/".. tercerContexto
-  
+	
+  -- y comparamos cada recurso del api del auid del token con el recursoValue del request
   if(concatToCompare == valueCompare) then
     return true
   end
