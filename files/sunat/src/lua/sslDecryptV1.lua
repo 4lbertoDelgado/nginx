@@ -1,8 +1,7 @@
 
---Lua que desencripta un certificado recibido en un XML
---17/10/2019
---Pierre Delgado
+--Objetivo: un certificado recibido en un XML
 
+----------------------------------------------------------------------------------------
 --Funcion que obtiene el valor desde el XML que viene en el body del request
 function GetValueFromXML(XML_string, XMLvalue)
    local XMLvalueLength=string.len(XMLvalue)+2
@@ -12,6 +11,7 @@ function GetValueFromXML(XML_string, XMLvalue)
    return ReturnValue
 end
 
+-----------------------------------------------------------------------------------------
 --Explicitamente leemos el body del req
 ngx.req.read_body()
 local bodyXml = ngx.req.get_body_data()
